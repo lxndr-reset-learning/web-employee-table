@@ -17,7 +17,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     private SessionFactory sessionFactory; // Используем DI. Spring должен
 
     @Override
-    @Transactional // аннотация сама открывает и закрывает транзакцию
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
         Query<Employee> employeeQueryResult = session.createQuery("from Employee ",
