@@ -28,17 +28,24 @@
         for (Employee emp : empList) {
     %>
     <tr>
-        <td><%= emp.getName() %></td>
-        <td><%= emp.getSurname() %></td>
-        <td><%= emp.getDepartment() %></td>
-        <td><%= emp.getSalary() %></td>
+        <td><%= emp.getName() %>
+        </td>
+        <td><%= emp.getSurname() %>
+        </td>
+        <td><%= emp.getDepartment() %>
+        </td>
+        <td><%= emp.getSalary() %>
+        </td>
     </tr>
     <%
         }
     %>
 
-
 </table>
 
+<br>
+<br>
+<input type="button" value="add"
+       onclick="window.location.href='/addNewEmployee'"/>
 </body>
 </html>

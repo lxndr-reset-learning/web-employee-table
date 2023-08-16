@@ -19,4 +19,9 @@ public class EmployeeServiceImpl implements EmployeeService { //Прокладк
     public List<Employee> getAllEmployees() {
         return employeeDAO.getAllEmployees();
     }
+
+    @Override
+    public void saveEmployee(Employee employee) {
+        employeeDAO.saveEmployee(employee);
+    }
 }

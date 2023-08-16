@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,14 +13,23 @@ import java.util.List;
 public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Autowired
-    private SessionFactory sessionFactory; // Используем DI. Spring должен
+    private SessionFactory sessionFactory; // Используем DI
+    private Session session;
 
     @Override
     public List<Employee> getAllEmployees() {
-        Session session = sessionFactory.getCurrentSession();
+        session = sessionFactory.getCurrentSession();
         Query<Employee> employeeQueryResult = session.createQuery("from Employee ",
                 Employee.class);
 
         return employeeQueryResult.getResultList();
     }
+
+    @Override
+    public void saveEmployee(Employee employee) {
+        session = sessionFactory.getCurrentSession();
+        session.persist(employee);
+    }
+
+
 }
