@@ -14,7 +14,6 @@ import java.util.List;
 public class MyController {
 
     @Autowired
-//    private EmployeeDAO employeeDAO;
     private EmployeeService employeeService;
 
     @RequestMapping("/showAllEmployees")

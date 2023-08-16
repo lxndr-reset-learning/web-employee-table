@@ -17,6 +17,7 @@
 <body>
 <h2>Employee Info</h2>
 <form:form action="saveEmployee" modelAttribute="employee">
+<%--saveEmployee - путь, по которому мы перейдём после того как нажмём Submit--%>
 
     Name <form:input path="name"/>
     <br>

@@ -47,5 +47,6 @@
 <br>
 <input type="button" value="add"
        onclick="window.location.href='/addNewEmployee'"/>
+<!--Переходим по данному пути-->
 </body>
 </html>
