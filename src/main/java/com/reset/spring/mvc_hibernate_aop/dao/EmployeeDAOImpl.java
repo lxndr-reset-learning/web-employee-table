@@ -3,6 +3,7 @@ package com.reset.spring.mvc_hibernate_aop.dao;
 import com.reset.spring.mvc_hibernate_aop.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +37,18 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         session = sessionFactory.getCurrentSession();
 
         return session.get(Employee.class, id);
+    }
+
+    @Override
+    public void deleteEmployeeById(int id) {
+        session = sessionFactory.getCurrentSession();
+        NativeQuery<Void> deleteEmployeeByIdQuery = session.createNativeQuery(
+                "delete from employee where id = :id", //":id" - синтаксис, создаём переменную которую отредактируем ниже
+                Void.class);
+
+        deleteEmployeeByIdQuery.setParameter("id", id);
+
+        deleteEmployeeByIdQuery.executeUpdate();
     }
 
 

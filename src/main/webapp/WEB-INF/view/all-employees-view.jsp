@@ -24,7 +24,7 @@
     </tr>
 
     <%
-        List<Employee> empList = List.copyOf((Collection<? extends Employee>) request.getAttribute("allEmps"));
+        List<Employee> empList = List.copyOf((List<Employee>) request.getAttribute("allEmps"));
         for (Employee emp : empList) {
     %>
     <tr>
@@ -38,10 +38,12 @@
         </td>
 
         <%String updateURL = request.getContextPath() + "/updateInfo?empId=" + emp.getId();%>
+        <%String deleteURL = request.getContextPath() + "/deleteEmployee?empId=" + emp.getId();%>
         <!--request - один из аргументов, которые передаются в любой jsp автоматически-->
 
         <td>
-            <input type="button" onclick="window.location.href='<%=updateURL%>'" value="updateButton">
+            <input type="button" onclick="window.location.href='<%=updateURL%>'" value="update">
+            <input type="button" onclick="window.location.href='<%=deleteURL%>'" value="delete">
         </td>
     </tr>
     <%

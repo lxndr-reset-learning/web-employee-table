@@ -5,7 +5,10 @@ import com.reset.spring.mvc_hibernate_aop.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,12 +23,6 @@ public class MyController {
         List<Employee> allEmployees = employeeService.getAllEmployees();
         model.addAttribute("allEmps", allEmployees); //Наш view будет использовать этот аттрибут, для того чтобы уже в нём выводить нужную информацию. По сути мы сейчас просто отформатировали нашлист под тот формат, который сможет использовать view
         Object allEmps = model.getAttribute("allEmps");
-
-        if (allEmps != null) { //debug thing
-            for (Employee emp : (List<Employee>) allEmps) {
-                System.out.println(emp);
-            }
-        }
 
         return "all-employees-view";
     }
@@ -49,6 +46,14 @@ public class MyController {
     public String updateEmployee(@RequestParam("empId") int employeeId, Model model) {
         model.addAttribute("employee",
                 employeeService.getEmployeeById(employeeId));
+
         return "employee-info";
+    }
+
+    @RequestMapping("/deleteEmployee")
+    public String deleteEmployee(@RequestParam("empId") int employeeId) {
+        employeeService.deleteEmployeeById(employeeId);
+
+        return "redirect:/showAllEmployees";
     }
 }
