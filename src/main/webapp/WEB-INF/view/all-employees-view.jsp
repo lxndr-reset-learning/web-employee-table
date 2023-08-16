@@ -1,5 +1,4 @@
-<%@ page import="com.reset.spring.mvc_hibernate_aop.entity.Employee, java.util.List" %>
-<%@ page import="jakarta.servlet.http.HttpServletRequest, java.util.Collection" %>
+<%@ page import="com.reset.spring.mvc_hibernate_aop.entity.Employee, java.util.List, java.util.Collection" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
@@ -9,7 +8,7 @@
   To change this template use File | Settings | File Templates.
 
 --%>
-<html>
+<html lang="en">
 <head>
     <title>All Employees</title>
 </head>
