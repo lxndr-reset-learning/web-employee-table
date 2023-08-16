@@ -24,4 +24,9 @@ public class EmployeeServiceImpl implements EmployeeService { //Прокладк
     public void saveEmployee(Employee employee) {
         employeeDAO.saveEmployee(employee);
     }
+
+    @Override
+    public Employee getEmployeeById(int id) {
+        return employeeDAO.getEmployeeById(id);
+    }
 }

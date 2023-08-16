@@ -21,6 +21,7 @@
         <th>Surname</th>
         <th>Department</th>
         <th>Salary</th>
+        <th>Operations</th>
     </tr>
 
     <%
@@ -35,6 +36,13 @@
         <td><%= emp.getDepartment() %>
         </td>
         <td><%= emp.getSalary() %>
+        </td>
+
+        <%String updateURL = request.getContextPath() + "/updateInfo?empId=" + emp.getId();%>
+        <!--request - один из аргументов, которые передаются в любой jsp автоматически-->
+
+        <td>
+            <input type="button" onclick="window.location.href='<%=updateURL%>'" value="updateButton">
         </td>
     </tr>
     <%

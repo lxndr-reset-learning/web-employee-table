@@ -17,8 +17,9 @@
 <body>
 <h2>Employee Info</h2>
 <form:form action="saveEmployee" modelAttribute="employee">
-<%--saveEmployee - путь, по которому мы перейдём после того как нажмём Submit--%>
-
+    <%--saveEmployee - путь, по которому мы перейдём после того как нажмём Submit--%>
+    <form:hidden path="id"/>
+    <%--т.к мы не вводим айди, мы не можем сохранить объект, так что надо обозначить что айди есть--%>
     Name <form:input path="name"/>
     <br>
     Surname <form:input path="surname"/>
