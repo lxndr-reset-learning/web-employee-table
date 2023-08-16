@@ -19,6 +19,13 @@ public class MyController {
     public String showAllEmployees(Model model) {
         List<Employee> allEmployees = employeeDAO.getAllEmployees();
         model.addAttribute("allEmps", allEmployees); //Наш view будет использовать этот аттрибут, для того чтобы уже в нём выводить нужную информацию. По сути мы сейчас просто отформатировали нашлист под тот формат, который сможет использовать view
+        Object allEmps = model.getAttribute("allEmps");
+
+        if (allEmps != null) { //debug thing
+            for (Employee emp : (List<Employee>) allEmps) {
+                System.out.println(emp);
+            }
+        }
 
         return "all-employees-view";
     }

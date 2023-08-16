@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.reset.spring.mvc_hibernate_aop.entity.Employee, java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: lxndr
   Date: 8/15/2023
@@ -20,15 +20,19 @@
         <th>Salary</th>
     </tr>
 
-    <jsp:useBean id="allEmps" scope="request" type="java.util.List"/>
-    <c:forEach var="emp" items="${allEmps}">
-        <tr>
-            <td>${emp.name}</td>
-            <td>${emp.surname}</td>
-            <td>${emp.department}</td>
-            <td>${emp.salary}</td>
-        </tr>
-    </c:forEach>
+    <%
+        List<Employee> empList = (List<Employee>) request.getAttribute("allEmps");
+        for (Employee emp : empList) {
+    %>
+    <tr>
+        <td><%= emp.getName() %></td>
+        <td><%= emp.getSurname() %></td>
+        <td><%= emp.getDepartment() %></td>
+        <td><%= emp.getSalary() %></td>
+    </tr>
+    <%
+        }
+    %>
 
 
 </table>
