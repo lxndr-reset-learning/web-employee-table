@@ -28,6 +28,7 @@
 
     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName" value="java:comp/env/jdbc/postgres"/>
+        <property name="proxyInterface" value="javax.sql.DataSource"/>
     </bean>
     <!--Т.к tomcat поддерживает pooling, имеет смысл использовать его вместо стороннего c3p0-->
 
