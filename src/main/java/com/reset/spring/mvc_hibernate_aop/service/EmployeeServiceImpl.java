@@ -8,6 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * EmployeeServiceImpl is a class that implements the EmployeeService interface.
+ * It serves as a bridge between the EmployeeDAO (Data Access Object) and the Controller.
+ * The class is annotated with @Service to indicate that it is a service component.
+ * It is also annotated with @Transactional to automatically manage the transaction.
+ */
 @Service
 @Transactional // аннотация сама открывает и закрывает транзакцию
 public class EmployeeServiceImpl implements EmployeeService { //Прокладка между DAO и Controller
