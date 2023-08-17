@@ -26,15 +26,10 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-          destroy-method="close">
-        <property name="driverClass" value="org.postgresql.Driver"/>
-        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgres"/>
-        <property name="user" value="postgres"/>
-        <property name="password" value="postgres"/>
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/postgres"/>
     </bean>
-
-    <!--Создание отдельных JDBC очень времязатратно, так что имеет смысл создавать пулы с помощью c3p0-->
+    <!--Т.к tomcat поддерживает pooling, имеет смысл использовать его вместо стороннего c3p0-->
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
